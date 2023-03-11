@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.css" rel="stylesheet">
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+    <button id="btn-run">Run Animation</button>
+    <button id="btn-gen">Generate Video</button>
+    <div id="container" style="width:800px;height:50vh;"></div>
+    <canvas id="render-canvas" height="500px" width="500px"></canvas>
+    <br />
+    <video id="result" loop controls hidden></video>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js"></script>
+
+    <script src="scripts.js"></script>
+    <script src="render-engine.js"></script>
+</body>
+
+</html>
