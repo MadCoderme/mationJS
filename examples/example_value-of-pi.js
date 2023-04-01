@@ -1,7 +1,8 @@
 (async() => {
     const scene = createScene('render-canvas', {
         background: 'black',
-        dimension: [854, 480]
+        dimension: [854, 480],
+        outputElem: 'out'
     })
     startRecording()
     let intro = scene.addText({

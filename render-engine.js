@@ -1,6 +1,7 @@
 var objects = []
 var canvas = null
 var ctx = null
+var media_recorder = null
 var sceneProps = {}
 
 //constants
@@ -86,6 +87,20 @@ const delay = (delayInms) => {
 }
 
 const startRecording = () => {
+    var chunks = [];
+    var canvas_stream = document.getElementById('render-canvas').captureStream(60)
+    media_recorder = new MediaRecorder(canvas_stream, { mimeType: "video/webm; codecs=vp9" })
+    media_recorder.ondataavailable = (evt) => { 
+        chunks.push(evt.data) 
+    }
+    media_recorder.onstop = () => {
+        var blob = new Blob(chunks, { type: "video/webm" });
+        const recording_url = URL.createObjectURL(blob)
+        let vid = document.getElementById(sceneProps.outputElem ?? 'result')
+        vid.src = recording_url
+        vid.style.display = 'block'
+    }
+
     media_recorder && media_recorder.start()
 }
 
